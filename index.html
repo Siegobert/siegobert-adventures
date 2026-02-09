@@ -360,53 +360,6 @@
       </div>
     </section>
 
-    <section id="contact" class="card pad">
-      <h2>Hulp nodig?</h2>
-      <p class="muted">Stuur een bericht. Dit formulier is “deelbaar bestand-proof”: het werkt lokaal als demo. Voor echte verzending koppel je later een mail of endpoint.</p>
-
-      <div class="grid2" style="margin-top:12px">
-        <div>
-          <form id="contactForm">
-            <div>
-              <label for="email">E-mail</label>
-              <input id="email" name="email" type="email" placeholder="naam@bedrijf.nl" required />
-            </div>
-            <div class="grid2">
-              <div>
-                <label for="fname">Voornaam</label>
-                <input id="fname" name="fname" type="text" placeholder="Voornaam" required />
-              </div>
-              <div>
-                <label for="lname">Achternaam</label>
-                <input id="lname" name="lname" type="text" placeholder="Achternaam" required />
-              </div>
-            </div>
-            <div>
-              <label for="msg">Bericht</label>
-              <textarea id="msg" name="msg" placeholder="Waar kunnen we je mee helpen?" required></textarea>
-            </div>
-            <button class="btn primary" type="submit">Request Demo</button>
-            <div id="formNote" class="muted" style="margin-top:8px; display:none"></div>
-          </form>
-        </div>
-
-        <div class="mini">
-          <h3>Voorstel om dit als gedeeld bestand te draaien</h3>
-          <p>
-            Optie A: Deel deze ene HTML in Teams/SharePoint. Iedereen kan ‘m openen in de browser, zonder installatie.
-          </p>
-          <p>
-            Optie B: Zet ‘m op een simpele host (GitHub Pages of Netlify). Dan heb je een vaste link, en kun je makkelijk updates doen.
-          </p>
-          <p>
-            Optie C: Maak er een interne pagina van op jullie intranet, met een echte contactflow (mail, ticket, of formulier).
-          </p>
-          <p class="muted" style="margin-top:10px">
-            Als je me zegt welke optie je wilt, kan ik de tekst en knoppen daarop afstellen.
-          </p>
-        </div>
-      </div>
-    </section>
 
     <footer>
       <div>© 2024 Siegobert's Adventures. All rights reserved.</div>
@@ -422,18 +375,6 @@
     </footer>
   </main>
 
-  <script>
-    // Demo-submit: werkt lokaal en in gedeelde file, zonder backend.
-    const form = document.getElementById('contactForm');
-    const note = document.getElementById('formNote');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(form).entries());
-      note.style.display = 'block';
-      note.textContent = "Ontvangen (demo). Kopieer dit bericht naar e-mail: " +
-        `${data.fname} ${data.lname} <${data.email}>: ${data.msg}`;
-      form.reset();
-    });
-  </script>
+
 </body>
 </html>
