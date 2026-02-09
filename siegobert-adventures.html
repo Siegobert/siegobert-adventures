@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Siegobert's Adventures</title>
+  <meta name="description" content="Siegobert is Out of Office. Terwijl hij siësta's perfectioneert en wijn inspecteert, staat het team klaar." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#111a2e;
+      --panel2:#0f172a;
+      --text:#e6e8ee;
+      --muted:#a7afc2;
+      --brand:#7c8cff;
+      --brand2:#4fd1c5;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(124,140,255,.35), transparent 55%),
+        radial-gradient(1000px 600px at 90% 10%, rgba(79,209,197,.22), transparent 55%),
+        linear-gradient(180deg, var(--bg), #070b14 60%);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px;}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      position:sticky; top:0; z-index:5;
+      backdrop-filter: blur(10px);
+      background: rgba(7,11,20,.55);
+      border-bottom:1px solid var(--line);
+      padding:14px 18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 0 0 5px rgba(124,140,255,.12);
+    }
+    nav{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    nav a{
+      text-decoration:none; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+      border:1px solid transparent;
+    }
+    nav a:hover{color:var(--text); border-color:var(--line); background:rgba(255,255,255,.04)}
+    .hero{
+      margin-top:22px;
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:22px;
+      align-items:stretch;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .pad{padding:26px}
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height:1.06;
+      letter-spacing:-.6px;
+    }
+    .lead{margin:0 0 18px; color:var(--muted); font-size:16px; line-height:1.55}
+    .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:12px;
+      text-decoration:none;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:700;
+    }
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#081021;
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .hero-img{
+      position:relative; min-height:260px;
+      background:
+        linear-gradient(180deg, rgba(7,11,20,.15), rgba(7,11,20,.72)),
+        url("https://uncody.com/uploads/66b21b79170497201b89afb8/file-1722952757799.jpg");
+      background-size:cover;
+      background-position:center;
+    }
+    .hero-badge{
+      position:absolute; left:18px; bottom:18px;
+      background: rgba(7,11,20,.65);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 14px;
+      max-width: 80%;
+    }
+    .hero-badge strong{display:block; font-size:14px}
+    .hero-badge span{display:block; color:var(--muted); font-size:13px; margin-top:4px; line-height:1.35}
+    section{margin-top:26px}
+    h2{margin:0 0 10px; font-size:24px; letter-spacing:-.3px}
+    h3{margin:0 0 6px; font-size:17px}
+    .muted{color:var(--muted); line-height:1.55}
+    .grid3{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px}
+    .grid2{display:grid; grid-template-columns:repeat(2, 1fr); gap:14px}
+    .mini{
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+    }
+    .mini p{margin:6px 0 0; color:var(--muted); line-height:1.45; font-size:14px}
+    .gallery{display:grid; grid-template-columns:repeat(3, 1fr); gap:12px}
+    .shot{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      min-height:160px;
+      position:relative;
+    }
+    .shot img{width:100%; height:210px; object-fit:cover; display:block}
+    .shot .cap{
+      position:absolute; left:10px; right:10px; bottom:10px;
+      background: rgba(7,11,20,.65);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:10px 10px;
+      font-weight:700;
+      font-size:13px;
+    }
+    .quote{
+      display:grid; grid-template-columns: 1fr auto; gap:14px; align-items:center;
+    }
+    .quote blockquote{
+      margin:0; padding:0;
+      font-size:16px; line-height:1.55; color:var(--text);
+    }
+    .quote cite{display:block; color:var(--muted); font-style:normal; margin-top:8px}
+    .stars{
+      display:flex; gap:3px; opacity:.9;
+      font-size:18px;
+    }
+    .stats{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px}
+    .stat{
+      text-align:center;
+      padding:18px 14px;
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:16px;
+    }
+    .stat .n{font-size:34px; font-weight:900; letter-spacing:-.8px}
+    .stat .l{margin-top:6px; color:var(--muted)}
+    form{
+      display:grid; gap:10px;
+    }
+    label{font-size:13px; color:var(--muted)}
+    input, textarea{
+      width:100%;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      padding:10px 12px;
+      outline:none;
+    }
+    textarea{min-height:110px; resize:vertical}
+    footer{
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    footer img{height:26px; opacity:.9}
+    .smalllinks{display:flex; gap:12px; flex-wrap:wrap}
+    .smalllinks a{color:var(--muted); text-decoration:none}
+    .smalllinks a:hover{color:var(--text)}
+    @media (max-width: 900px){
+      .hero{grid-template-columns: 1fr}
+      .grid3{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
+      .gallery{grid-template-columns: 1fr}
+      .stats{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand" aria-label="Siegobert's Adventures">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Siegobert's Adventures</span>
+    </div>
+    <nav>
+      <a href="#about">Wie</a>
+      <a href="#skills">Skills</a>
+      <a href="#offer">Wat we bieden</a>
+      <a href="#gallery">Avonturen</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <div class="card pad">
+        <h1>Siegobert is Out of Office!</h1>
+        <p class="lead">
+          Terwijl hij druk is met het perfectioneren van Italiaanse siësta’s en het serieuze werk
+          van wijninspectie, staan wij klaar voor alles wat echt niet kan wachten. Geen paniek: hij is terug
+          voordat iemand “Arrivederci” foutloos kan spellen.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Hulp nodig</a>
+          <a class="btn" href="#gallery">Bekijk avonturen</a>
+          <a class="btn" href="https://www.muziekgebouweindhoven.nl" target="_blank" rel="noreferrer">Muziekgebouw Eindhoven</a>
+        </div>
+
+        <section id="about" style="margin-top:18px">
+          <h2>Wie is Siegobert?</h2>
+          <p class="muted">
+            Siegobert is niet zomaar op vakantie; hij is een ervaringsconnaisseur. Van hangmatten testen tot
+            “extreme ironing” op plekken waar strijken eigenlijk verboden zou moeten zijn: alles voor de wetenschap.
+          </p>
+          <p class="muted" style="margin-top:10px">Leven, maar dan één strandstoel tegelijk.</p>
+        </section>
+      </div>
+
+      <div class="card hero-img" role="img" aria-label="Strandstoelen bij zonsondergang">
+        <div class="hero-badge">
+          <strong>Terug voordat het ongemakkelijk wordt</strong>
+          <span>Tot die tijd: wij houden de boel draaiend, jij houdt je ademhaling rustig.</span>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="grid3">
+        <div class="mini">
+          <h3>Expert Hammock Tester</h3>
+          <p>Zorgt dat elke hangmat perfect hangt voor maximale ontspanning en minimale verantwoordelijkheid.</p>
+        </div>
+        <div class="mini">
+          <h3>Wine Enthusiast</h3>
+          <p>Voorzichtig en secuur onderzoek naar flessen. Pure kwaliteitscontrole, toevallig ook lekker.</p>
+        </div>
+        <div class="mini">
+          <h3>Extreme Ironing Champion</h3>
+          <p>Strijkt waar anderen opgeven. Resultaat: scherpe plooi, zachte aanpak.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Siegobert's unieke skills</h2>
+      <p class="muted">
+        Van timing van strandwandelingen tot snorkelvaardigheden: hij haalt uit elk moment het maximale.
+        Wij doen ondertussen het echte werk.
+      </p>
+      <div class="grid3" style="margin-top:12px">
+        <div class="mini">
+          <h3>Beach Walk Timing</h3>
+          <p>Altijd het beste licht, nooit verbrand. Het is bijna verdacht professioneel.</p>
+        </div>
+        <div class="mini">
+          <h3>Snorkeling Extraordinaire</h3>
+          <p>Onderwateravonturen die net iets te enthousiast gedeeld worden aan tafel.</p>
+        </div>
+        <div class="mini">
+          <h3>Siesta Specialist</h3>
+          <p>Perfecte timing voor optimale energie voor het volgende “zware” uitstapje.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="offer" class="card pad">
+      <h2>Wat we bieden</h2>
+      <p class="muted">
+        Terwijl Siegobert weg is, zorgen wij dat je niet in de wachtrij van de chaos belandt.
+      </p>
+      <div class="grid3" style="margin-top:12px">
+        <div class="mini">
+          <h3>Customer Support</h3>
+          <p>Voor urgente vragen en praktische hulp. We reageren sneller dan een cappuccino afkoelt.</p>
+        </div>
+        <div class="mini">
+          <h3>Hospitality Excellence</h3>
+          <p>Gastvrijheid met aandacht en ritme. Geen fratsen, wel finesse.</p>
+        </div>
+        <div class="mini">
+          <h3>Event Coordination</h3>
+          <p>We helpen je plannen en schakelen. Siegobert test ondertussen stoelen in het wild.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>Siegobert's adventures</h2>
+      <p class="muted">Een kleine greep uit het zware leven in Italië en daarbuiten.</p>
+      <div class="gallery" style="margin-top:12px">
+        <div class="shot">
+          <img alt="Tasting vino in Tuscany" src="https://uncody.com/uploads/66b21b79170497201b89afb8/file-1722950121582.jpg" />
+          <div class="cap">Tasting Vino in Tuscany</div>
+        </div>
+        <div class="shot">
+          <img alt="Beach chair testing" src="https://uncody.com/uploads/66b21b79170497201b89afb8/file-1722952757799.jpg" />
+          <div class="cap">Beach Chair Testing</div>
+        </div>
+        <div class="shot">
+          <img alt="Snorkeling adventures" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=70" />
+          <div class="cap">Snorkeling Adventures</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card pad">
+      <div class="quote">
+        <div>
+          <h2>Wat mensen zeggen</h2>
+          <blockquote>
+            Siegobert’s toewijding aan ontspanning en avontuur is ongeëvenaard. Zijn talent om werk en plezier te combineren is… verdacht inspirerend.
+            <cite>— Sophya Bennett, Tranquility Expert</cite>
+          </blockquote>
+        </div>
+        <div class="stars" aria-label="5 sterren beoordeling">
+          <span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span>
+        </div>
+      </div>
+
+      <div style="margin-top:16px">
+        <h2>Adventure stats</h2>
+        <div class="stats" style="margin-top:10px">
+          <div class="stat">
+            <div class="n">15</div>
+            <div class="l">Hangmatten getest</div>
+          </div>
+          <div class="stat">
+            <div class="n">25</div>
+            <div class="l">Wijnflessen geïnspecteerd</div>
+          </div>
+          <div class="stat">
+            <div class="n">11</div>
+            <div class="l">Siësta’s genomen</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="card pad">
+      <h2>Hulp nodig?</h2>
+      <p class="muted">Stuur een bericht. Dit formulier is “deelbaar bestand-proof”: het werkt lokaal als demo. Voor echte verzending koppel je later een mail of endpoint.</p>
+
+      <div class="grid2" style="margin-top:12px">
+        <div>
+          <form id="contactForm">
+            <div>
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" placeholder="naam@bedrijf.nl" required />
+            </div>
+            <div class="grid2">
+              <div>
+                <label for="fname">Voornaam</label>
+                <input id="fname" name="fname" type="text" placeholder="Voornaam" required />
+              </div>
+              <div>
+                <label for="lname">Achternaam</label>
+                <input id="lname" name="lname" type="text" placeholder="Achternaam" required />
+              </div>
+            </div>
+            <div>
+              <label for="msg">Bericht</label>
+              <textarea id="msg" name="msg" placeholder="Waar kunnen we je mee helpen?" required></textarea>
+            </div>
+            <button class="btn primary" type="submit">Request Demo</button>
+            <div id="formNote" class="muted" style="margin-top:8px; display:none"></div>
+          </form>
+        </div>
+
+        <div class="mini">
+          <h3>Voorstel om dit als gedeeld bestand te draaien</h3>
+          <p>
+            Optie A: Deel deze ene HTML in Teams/SharePoint. Iedereen kan ‘m openen in de browser, zonder installatie.
+          </p>
+          <p>
+            Optie B: Zet ‘m op een simpele host (GitHub Pages of Netlify). Dan heb je een vaste link, en kun je makkelijk updates doen.
+          </p>
+          <p>
+            Optie C: Maak er een interne pagina van op jullie intranet, met een echte contactflow (mail, ticket, of formulier).
+          </p>
+          <p class="muted" style="margin-top:10px">
+            Als je me zegt welke optie je wilt, kan ik de tekst en knoppen daarop afstellen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2024 Siegobert's Adventures. All rights reserved.</div>
+      <div class="smalllinks">
+        <a href="#about">Privacy Policy</a>
+        <a href="#about">Terms of Service</a>
+        <a href="#gallery">Blog</a>
+        <a href="#contact">Support</a>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px">
+        <img alt="Uncody logo (bron)" src="https://uncody.b-cdn.net/logos/uncody-logo-cmp.jpg" />
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Demo-submit: werkt lokaal en in gedeelde file, zonder backend.
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      note.style.display = 'block';
+      note.textContent = "Ontvangen (demo). Kopieer dit bericht naar e-mail: " +
+        `${data.fname} ${data.lname} <${data.email}>: ${data.msg}`;
+      form.reset();
+    });
+  </script>
+</body>
+</html>
